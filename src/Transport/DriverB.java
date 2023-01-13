@@ -1,6 +1,6 @@
 package Transport;
 
-public class DriverB <A extends Car > extends Driver {
+public class DriverB <T extends Car > extends Driver {
 
     public DriverB(String name, Boolean driverLicense, Integer experience) {
         super(name, driverLicense, experience);
@@ -21,7 +21,7 @@ public class DriverB <A extends Car > extends Driver {
         return "Автомобиль заправляется бензином";
     }
 
-    public String getCarMessage(Car car) {
+    public String getCarMessage(T car) {
         return "Водитель "+ getName()+ " управляет автомобилем " + car.getBrand() +" " + car.getType() +
                 " и будет участвовать в заезде";
     }

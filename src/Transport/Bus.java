@@ -2,6 +2,7 @@ package Transport;
 
 public final class Bus extends Transport implements Competing {
     public enum Size {
+        MISTAKE(Integer.MIN_VALUE, 9),
         XS(10, 25),
         S(26, 50),
         M(51, 80),
@@ -31,30 +32,22 @@ public final class Bus extends Transport implements Competing {
                     return i;
                 }
                 if (value <= i.getMin() && value <= i.getMax()) {
-                    return S;
+                    return MISTAKE;
                 }
             }
             return XXL;
         }
 
         @Override
-        public String toString() {
-            switch (this) {
-                case XS:
-                    return "Вместимость: " + getMin() + " - " + getMax() + " мест";
-                case S:
-                    return "Вместимость: " + getMin() + " - " + getMax() + " мест";
-                case M:
-                    return "Вместимость: " + getMin() + " - " + getMax() + " мест";
-                case L:
-                    return "Вместимость: " + getMin() + " - " + getMax() + " мест";
-                case XL:
-                    return "Вместимость: " + getMin() + " - " + getMax() + " мест";
-                case XXL:
-                    return "Понадобится несколько автобусов для такого количества людей";
-                default:
-                    throw new IllegalArgumentException();
+        public final String toString() {
+            if (MISTAKE == this) {
+                return "Может стоит задуматься о микроавтобусе?";
+            } else if ((XS == this) || (S == this) || (M == this) || (L == this) || (XL == this)) {
+                return "Вместимость: " + getMin() + " - " + getMax() + " мест";
+            } else if (XXL == this) {
+                return "Понадобится несколько автобусов для такого количества людей";
             }
+            return null;
         }
     }
 
@@ -62,6 +55,7 @@ public final class Bus extends Transport implements Competing {
 
     public Bus(String brand, String type, String color) {
         super(brand, type, color);
+        printType();
     }
 
     public Bus(String brand, String type, String color, Size size) {
@@ -71,6 +65,7 @@ public final class Bus extends Transport implements Competing {
 
     public Bus(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed) {
         super(brand, type, color, secondsOfPitstop, secondsOfLapTime, maxSpeed);
+        printType();
     }
 
     public Bus(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed, Size size) {
@@ -88,6 +83,11 @@ public final class Bus extends Transport implements Competing {
             return;
         }
         this.size = size;
+    }
+
+    @Override
+    void printType() {
+        System.out.println("Данных по транспортному средству недостаточно");
     }
 
     @Override

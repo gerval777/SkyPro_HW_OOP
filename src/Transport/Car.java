@@ -30,10 +30,11 @@ public final class Car extends Transport implements Competing{
         }
     }
 
-    BodyType bodyType;
+    private BodyType bodyType;
 
     public Car(String brand, String type, String color) {
         super(brand, type, color);
+        printType();
     }
     public Car(String brand, String type, String color, BodyType bodyType) {
         super(brand, type, color);
@@ -51,7 +52,10 @@ public final class Car extends Transport implements Competing{
         }
         this.bodyType = bodyType;
     }
-
+    @Override
+    void printType() {
+        System.out.println("Данных по транспортному средству недостаточно");
+    }
     @Override
     void startToMove() {
         System.out.println("Легковой автомобиль начинает движение");

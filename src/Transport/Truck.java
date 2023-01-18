@@ -36,23 +36,22 @@ public final class Truck extends Transport implements Competing {
 
         @Override
         public String toString() {
-            switch (this) {
-                case N1:
-                    return "N1 Грузоподъемность: до " + getMax() + " тонн.";
-                case N2:
-                    return "N2 Грузоподъемность: от " + getMin() + " тонн до " + getMax() + " тонн.";
-                case N3:
+                if (N1 == this) {
+                    return "Грузоподъемность: до " + getMax() + " тонн.";
+                } else if (N2 == this) {
+                    return "Грузоподъемность: от " + getMin() + " тонн до " + getMax() + " тонн.";
+                }else if (N3 == this) {
                     return "N3 Грузоподъемность: от " + getMin() + " тонн.";
-                default:
-                    throw new IllegalArgumentException();
+                }
+                return "Ваш номер в очереди к психиатру 2. Перед Вами разработчик этого кода";
             }
-        }
     }
 
     private LoadCapacity loadCapacity;
 
     public Truck(String brand, String type, String color) {
         super(brand, type, color);
+        printType();
     }
 
     public Truck(String brand, String type, String color, LoadCapacity loadCapacity) {
@@ -62,6 +61,7 @@ public final class Truck extends Transport implements Competing {
 
     public Truck(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed) {
         super(brand, type, color, secondsOfPitstop, secondsOfLapTime, maxSpeed);
+        printType();
     }
 
     public Truck(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed, LoadCapacity loadCapacity) {
@@ -80,7 +80,10 @@ public final class Truck extends Transport implements Competing {
         }
         this.loadCapacity = loadCapacity;
     }
-
+    @Override
+    void printType() {
+        System.out.println("Данных по транспортному средству недостаточно");
+    }
     @Override
     void startToMove() {
         System.out.println("Грузовой автомобиль начинает движение");

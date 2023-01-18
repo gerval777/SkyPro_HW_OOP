@@ -3,7 +3,7 @@ package Transport;
 public class TestRaces {
     public static void main(String[] args) {
 
-        Truck truck1 = new Truck("Fura", "Самосвал", "Зеленая",0,500,250);
+        Truck truck1 = new Truck("Fura", "Самосвал", "Зеленая", 0, 500, 250);
         Truck truck2 = new Truck("Fura", "Погрузчик", "Желтый");
         Truck truck3 = new Truck("Fura", "Бетономешалка", "Красный");
         Truck truck4 = new Truck("Fura", "Грузовой", "Черный");
@@ -18,10 +18,19 @@ public class TestRaces {
         Bus bus3 = new Bus("Busi", "Двухярка", "Ржавый");
         Bus bus4 = new Bus("Busi", "Моссон", "Сиреневый");
 
-        System.out.println(truck1);
-        System.out.println(truck2);
 
-        DriverB driverB = new DriverB<Car>("Олег",true, 10);
+        DriverB driverB = new DriverB<Car>("Олег", true, 10);
         System.out.println(driverB.getCarMessage(car1));
+        System.out.println(Car.BodyType.BT_HATCHBACK + "\n");
+
+        DriverC driverC = new DriverC<Truck>("Дмитрий", true, 11);
+        System.out.println(driverC.getCarMessage(truck1));
+        System.out.println(Truck.LoadCapacity.getValue(-2) + "\n");
+
+
+        DriverD driverD = new DriverD<Bus>("Максим", true, 12);
+        System.out.println(driverD.getCarMessage(bus1));
+        //System.out.println(Bus.Size.getValue(5) + "\n");
+
     }
 }

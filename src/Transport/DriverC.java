@@ -21,6 +21,7 @@ public class DriverC <T extends Truck > extends Driver {
         return "Автомобиль заправляется бензином";
     }
 
+
     public String getCarMessage(T truck) {
         return "Водитель "+ getName()+ " управляет автомобилем " + truck.getBrand() +" " + truck.getType() +
                 " и будет участвовать в заезде";

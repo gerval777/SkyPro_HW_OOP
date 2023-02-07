@@ -33,25 +33,23 @@ public final class Truck extends Transport implements Competing {
             }
             return N3;
         }
-
         @Override
         public String toString() {
-                if (N1 == this) {
-                    return "Грузоподъемность: до " + getMax() + " тонн.";
-                } else if (N2 == this) {
-                    return "Грузоподъемность: от " + getMin() + " тонн до " + getMax() + " тонн.";
-                }else if (N3 == this) {
-                    return "N3 Грузоподъемность: от " + getMin() + " тонн.";
-                }
-                return "Ваш номер в очереди к психиатру 2. Перед Вами разработчик этого кода";
+            if (max <= 3.5) {
+                return "Грузоподъемность: до " + getMax() + " тонн.";
+            } else if (max <= 12) {
+                return "Грузоподъемность: от " + getMin() + " тонн до " + getMax() + " тонн.";
+            } else if (max > 12) {
+                return "N3 Грузоподъемность: от " + getMin() + " тонн.";
             }
+            return "Ваш номер в очереди к психиатру 2. Перед Вами разработчик этого кода";
+        }
     }
 
     private LoadCapacity loadCapacity;
 
     public Truck(String brand, String type, String color) {
         super(brand, type, color);
-        printType();
     }
 
     public Truck(String brand, String type, String color, LoadCapacity loadCapacity) {
@@ -61,7 +59,6 @@ public final class Truck extends Transport implements Competing {
 
     public Truck(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed) {
         super(brand, type, color, secondsOfPitstop, secondsOfLapTime, maxSpeed);
-        printType();
     }
 
     public Truck(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed, LoadCapacity loadCapacity) {
@@ -82,8 +79,12 @@ public final class Truck extends Transport implements Competing {
     }
     @Override
     void printType() {
-        System.out.println("Данных по транспортному средству недостаточно");
+        if (getType() == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        System.out.println(getType());
     }
+
     @Override
     void startToMove() {
         System.out.println("Грузовой автомобиль начинает движение");

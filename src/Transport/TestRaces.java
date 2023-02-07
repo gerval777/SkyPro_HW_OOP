@@ -25,12 +25,11 @@ public class TestRaces {
 
         DriverC driverC = new DriverC<Truck>("Дмитрий", true, 11);
         System.out.println(driverC.getCarMessage(truck1));
-        System.out.println(Truck.LoadCapacity.getValue(-2) + "\n");
-
+        System.out.println(Truck.LoadCapacity.getValue(3) + "\n");
 
         DriverD driverD = new DriverD<Bus>("Максим", true, 12);
         System.out.println(driverD.getCarMessage(bus1));
-        //System.out.println(Bus.Size.getValue(5) + "\n");
+        System.out.println(Bus.Size.getValue(160) + "\n");
 
     }
 }

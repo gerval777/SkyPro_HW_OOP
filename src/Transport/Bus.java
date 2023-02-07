@@ -40,11 +40,11 @@ public final class Bus extends Transport implements Competing {
 
         @Override
         public final String toString() {
-            if (MISTAKE == this) {
+            if (min < 10) {
                 return "Может стоит задуматься о микроавтобусе?";
-            } else if ((XS == this) || (S == this) || (M == this) || (L == this) || (XL == this)) {
+            } else if (max < 150) {
                 return "Вместимость: " + getMin() + " - " + getMax() + " мест";
-            } else if (XXL == this) {
+            } else if (max > 150) {
                 return "Понадобится несколько автобусов для такого количества людей";
             }
             return null;
@@ -55,7 +55,6 @@ public final class Bus extends Transport implements Competing {
 
     public Bus(String brand, String type, String color) {
         super(brand, type, color);
-        printType();
     }
 
     public Bus(String brand, String type, String color, Size size) {
@@ -65,7 +64,6 @@ public final class Bus extends Transport implements Competing {
 
     public Bus(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed) {
         super(brand, type, color, secondsOfPitstop, secondsOfLapTime, maxSpeed);
-        printType();
     }
 
     public Bus(String brand, String type, String color, int secondsOfPitstop, int secondsOfLapTime, int maxSpeed, Size size) {
@@ -87,7 +85,10 @@ public final class Bus extends Transport implements Competing {
 
     @Override
     void printType() {
-        System.out.println("Данных по транспортному средству недостаточно");
+        if (getType() == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        System.out.println(getType());
     }
 
     @Override

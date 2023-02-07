@@ -94,6 +94,8 @@ public abstract class Transport {
 
     abstract void finish();
 
+    abstract void printType();
+
     @Override
     public String toString() {
         return "Участник гонок: " + getType() + ", Марка: " + getBrand() + ", Цвет: " + getColor() + addingToString();
